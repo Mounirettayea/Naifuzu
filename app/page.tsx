@@ -5,16 +5,24 @@ const solutions = [
   ["04", "IoT & Connectivity", "Connect physical and digital environments through intelligent devices, data and automation."],
 ];
 
+const navItems = [["Solutions", "#solutions"], ["Technology", "#technology"], ["About", "#about"], ["Case Studies", "#cases"], ["Contact", "#contact"]];
+
 export default function Home() {
   return (
     <main>
       <div className="grid-bg" />
       <nav className="nav">
         <a className="brand" href="#top"><span>N</span> NAIFUZU</a>
-        <div className="navlinks">
-          <a href="#solutions">Solutions</a><a href="#technology">Technology</a><a href="#about">About</a><a href="#cases">Case Studies</a><a href="#contact">Contact</a>
-        </div>
+        <div className="navlinks">{navItems.map(([label, href]) => <a href={href} key={label}>{label}</a>)}</div>
         <a className="navcta" href="#contact">Book a Demo <b>↗</b></a>
+        <details className="mobile-menu">
+          <summary aria-label="Open navigation"><span></span><span></span><span></span></summary>
+          <div className="mobile-drawer">
+            <div className="drawer-top"><span>MENU / 01</span><span className="live-dot">● LIVE</span></div>
+            <div className="mobile-links">{navItems.map(([label, href], i) => <a href={href} key={label}><small>0{i + 1}</small><span>{label}</span><b>↗</b></a>)}</div>
+            <div className="drawer-bottom"><span>NAIFUZU / 2026</span><a href="mailto:hello@naifuzu.com">Start a conversation →</a></div>
+          </div>
+        </details>
       </nav>
 
       <section id="top" className="hero section">
